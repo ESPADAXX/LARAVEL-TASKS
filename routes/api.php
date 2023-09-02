@@ -19,7 +19,8 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::post('/register', [RegisterController::class,"register"]);
 Route::post('/login', [LoginController::class,"login"]);
-
+// When a user is logged in, set the token that will be shown in a Bearer token
+// in the authentication header to generate the token for CRUD operations.
 Route::middleware('auth:api')->group(function () {
     Route::get('/members', [MemberController::class,'index']);
     Route::get('/members/{member}', [MemberController::class,'show']);
